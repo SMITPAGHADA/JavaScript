@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <label>enter first value</label>
+        <input type="text" id="in1">
+        <br><br><br>
+        <label>enter second value</label>
+        <input type="text" id="in2">
+        <br><br><br>
+        <h1 id="ans"></h1>
+    </center>
+</body>
+</html>
+<script>
+    let a=document.getElementById("in1").value
+    let b=document.getElementById("in2").value
+
+function divide(a1,b1) {
+    document.getElementById("ans").innerHTML= +a1 / +b1
+}
+divide(a,b)
+
+
+</script>

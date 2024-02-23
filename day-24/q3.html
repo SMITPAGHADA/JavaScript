@@ -1,0 +1,33 @@
+<!-- 
+### Question 3: Book Inventory Management
+
+You are building a simple book inventory management system. You have an array of book objects, each containing information about the book: `title`, `author`, `price`, and `quantityAvailable`.The function should return an array of books that can be purchased within the given budget 60 also should be available . If no books are affordable, return an empty array. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let arr =[]
+    let book = [{ title: "chankiyaniti", authoor: "chankiya", price: 150, quantityAvailable: 20 },
+    { title: "Ek Samandar, Mere Andar”", authoor: "	Sanjeev Joshi", price: 250, quantityAvailable: 25 },
+    { title: "Four Stars of Destiny", authoor: "General Manoj Mukund Naravane", price: 350, quantityAvailable: 70 },
+    { title: "Maha Kavithai", authoor: "Vairamuthu", price: 50, quantityAvailable: 10 }
+    ]
+
+    for(let i=0;i<book.length;i++){ 
+        if(book[i].price<60 && book[i].quantityAvailable>0){
+               arr.push(book[i].title)
+                }
+    }
+    console.log(arr)
+</script>

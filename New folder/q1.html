@@ -1,0 +1,40 @@
+<!-- Calculate the total price with the given quantity and pricevar e_commerce = { 
+    products : ["earphone","headphone","earpods"],
+   quantity : [4,3,2],
+   price : [700, 800, 1000],
+   
+   total_price : // write code here
+   }; -->
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   </head>
+   <body>
+    
+   </body>
+   </html>
+   <script>
+    let ecommerce={
+        products : ["earphone","headphone","earpods"],
+        quantity : [4,3,2],
+        price : [700, 800, 1000],
+        totalprice : function(){
+          
+      let total=0;
+            for(let i=0;i<ecommerce.products.length;i++){
+              total+=ecommerce.quantity[i]*ecommerce.price[i];
+          
+            }
+            console.log(total);
+        }
+       
+    }
+    ecommerce.totalprice()
+ 
+  
+   
+   </script>

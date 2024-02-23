@@ -1,0 +1,58 @@
+<!-- **Question 1:**
+
+**Title:** Day of the Week
+
+**Description:** Write a JavaScript program that uses a `switch-case` statement to check the value of a variable `day`. Depending on the value of `day`, display the following messages:
+- If `day` is "Monday", console.log("It's the start of the workweek.").
+- If `day` is "Friday", console.log("It's almost the weekend!").
+- For any other value of `day`, console.log("It's some other day."). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+<body>
+
+    <center>
+        <br><br><br>
+        <br><br><br>
+        <label>enter value</label>
+        <input type="text" id="in1">
+        <br><br><br>
+        
+    
+       
+        <h1 id="ans"></h1>
+    </center>
+  
+    
+</body>
+</html>
+<script>
+
+    let a=document.getElementById("in1").value
+
+
+    switch (parseInt(a)) {
+        case 1:document.getElementById("ans").innerHTML="monday"+"It's the start of the workweek."  
+            break;
+            case 2:document.getElementById("ans").innerHTML="tuesday"+"It's some other day."  
+             break;
+             case 3:document.getElementById("ans").innerHTML="wednesday"+"It's some other day."  
+             break;
+             case 4:document.getElementById("ans").innerHTML="thursday"+"It's some other day."  
+             break;
+             case 5:document.getElementById("ans").innerHTML="friday"+"It's almost the weekend!"  
+             break;
+             case 6:document.getElementById("ans").innerHTML="saturday's almost the weekend!"  
+             break;
+             case 7:document.getElementById("ans").innerHTML="sunday's almost the weekend!"  
+             break;
+          default:document.getElementById("ans").innerHTML="enter the number" 
+            break;
+    }
+</script>

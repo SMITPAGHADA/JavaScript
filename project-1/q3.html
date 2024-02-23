@@ -1,0 +1,28 @@
+<!-- Q4. Build a currency converter that converts an amount from one currency to another based on user input, using
+conditional statements to determine the conversion rates. ($ to Rs.) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <label for="">enter value</label>
+        <input type="text" id="in1">
+        <br><br><br>
+        <h1 id="ans"></h1>
+    </center>
+</body>
+</html>
+<script>
+    let a=document.getElementById("in1").value
+
+if (a=="") {
+    document.getElementById("ans").innerHTML="enter value"
+} else {
+    document.getElementById("ans").innerHTML= "$"+a*82.98
+}
+</script>

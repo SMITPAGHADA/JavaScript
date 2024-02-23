@@ -1,0 +1,34 @@
+<!-- Q.4 Write a Program to print the fibonacci series up to 5 numbers using for loop.
+For example,
+Input:
+Enter any number: 8
+
+Output:
+0, 1, 1, 2, 3, 5, 8, 13 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>enter value</label>
+    <input type="text" id="in1">
+</body>
+</html>
+<script>
+    let a=document.getElementById("in1").value
+    let b=-1,c=1,e
+
+for(let i=0 ; i<=a ; i++){
+ e=b+c
+ b=c
+ c=e
+ 
+ console.log(e)
+}
+
+
+</script>
