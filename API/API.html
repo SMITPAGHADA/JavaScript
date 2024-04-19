@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main"></div>
+
+    <input type="text" name="" id="up">
+    <button onclick="weather()">search</button>
+</body>
+</html>
+<script>
+
+
+function weather(){
+    let key="d16ca5500d9cb0c41b791ddb46565f9d"
+    let data=document.getElementById("up").value
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${data}&appid=${key}`)
+
+    .then(function(response){
+         return response.json();
+    })
+    .then(function(json){
+         console.log(json);
+         currente(json);
+    });
+}
+
+
+
+function currente(json){
+    document.getElementById("main").innerHTML=""
+
+    div=document.createElement("div");
+
+    let  base=document.createElement("h5")
+   base.innerHTML=json.base
+
+    let  name=document.createElement("h5")
+   name.innerHTML=json.name
+
+    let  wind=document.createElement("h6")
+    wind.innerHTML=json.wind.speed
+    let  wind1=document.createElement("h6")
+    wind1.innerHTML=json.wind.deg
+    let  wind2=document.createElement("h6")
+    wind2.innerHTML=json.wind.gust
+
+    div.append(base,name,wind,wind1,wind2)
+    document.getElementById("main").append(div)
+ 
+ 
+}
+
+
+
+</script>

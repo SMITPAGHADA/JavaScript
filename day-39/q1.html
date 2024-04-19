@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+<body>
+    <center>
+
+        <form action="" id="signUp">
+            <label> first name</label>
+            <input type="text" id="Fname">
+            <br><br><br>
+            <label>last name</label>
+            <input type="text" id="Lname">
+            <br><br><br>
+            <label>Email</label>
+            <input type="text" id="Email">
+            <br><br><br>
+            <label>password</label>
+            <input type="text" id="psw">
+            <br><br><br>
+
+            <button type="submit">submit</button>
+        </form>
+    </center>
+</body>
+</html>
+<script>
+  let main=document.getElementById("signUp")
+  main.addEventListener("submit",function(e){
+
+
+    let firstname=document.getElementById("Fname").value
+    let lastname=document.getElementById("Lname").value
+    let email=document.getElementById("Email").value
+    let password=document.getElementById("psw").value
+
+
+    let storeUp= JSON.parse(localStorage.getItem("users"))  || []
+    storeUp.push({firstname,lastname,email,password})
+    localStorage.setItem("users",JSON.stringify(storeUp))
+  })
+</script>

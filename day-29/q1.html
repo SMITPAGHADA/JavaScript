@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation*</title>
+</head>
+<body>
+    <input type="text" id="in">
+
+<button type="submit" onclick="validEmail()">click</button><br>
+<span id="err"></span>
+</body>
+</html>
+<script>
+
+function Gmail1(email) {
+
+
+    if( email===""){
+            throw new Error("Please enter a valid email")
+    }
+    if(!email.includes("@gmail.com")){
+        throw new Error(" Email should have @")
+    }
+   
+        document.getElementById("err").innerHTML="up to date"
+   
+}
+
+
+function  validEmail(){
+   
+    document.getElementById("err").innerHTML=""
+ try{
+    let email=document.getElementById("in").value
+    Gmail1(email);
+    document.getElementById("err").style.color="green"
+ }catch(e){
+document.getElementById("err").innerHTML=e.message
+document.getElementById("err").style.color="red"
+ }
+}
+
+</script>

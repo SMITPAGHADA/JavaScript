@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <center>
+    <input type="text" id="in">
+    <br>
+    <span id="ans"></span><br>
+    <button onclick="valid()">Submit</button>
+
+   </center>
+</body>
+</html>
+<script>
+    function a(email){  
+        if (email === "") {
+            throw new Error("String must contain some characters")
+        }
+    }
+
+    function valid(){
+        document.getElementById("ans").innerHTML=""
+       try {
+        let email = document.getElementById("in").value
+        a(email)
+       } catch (error) {
+        document.getElementById("ans").innerHTML = error.message
+       }
+
+    }
+</script>

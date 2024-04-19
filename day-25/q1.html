@@ -1,0 +1,85 @@
+<!-- 1. Complete the functionality in the file selectors.html
+On clicking the button Change H1 the colour of first <h1> should turn to red
+On clicking the button Change H3 the colour of all <h3> should turn to green
+On clicking the button Change H5 the colour of all <h5> should turn to blue
+On clicking Change Green all the elements with the class green should change to green
+On clicking Change Blue all the elements with the class blue should change to blue
+On clicking Change Red all the elements with the class red should change to red -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1 id="first">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima ipsa iusto unde vitae atque harum, suscipit, enim deleniti praesentium tempora minus quidem voluptatibus debitis alias perspiciatis dolores in! Dolorem, nostrum?
+        </h1>
+        <button onclick="first()">change </button>
+    
+       <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem consequatur rerum laboriosam consequuntur a! Repellendus, nesciunt natus? Esse vero laborum nemo officiis quidem. Molestiae quaerat recusandae excepturi modi nam temporibus?</h3> 
+       <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem consequatur rerum laboriosam consequuntur a! Repellendus, nesciunt natus? Esse vero laborum nemo officiis quidem. Molestiae quaerat recusandae excepturi modi nam temporibus?</h3>
+       <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem consequatur rerum laboriosam consequuntur a! Repellendus, nesciunt natus? Esse vero laborum nemo officiis quidem. Molestiae quaerat recusandae excepturi modi nam temporibus?</h3>
+    
+       <button onclick="second()">change</button>
+    
+    
+       <h5>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ipsum laudantium fugit voluptate magnam expedita, assumenda neque dolorum cupiditate aspernatur explicabo adipisci a minima recusandae ratione, similique, eligendi qui odit!
+       </h5>
+       <h5>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ipsum laudantium fugit voluptate magnam expedita, assumenda neque dolorum cupiditate aspernatur explicabo adipisci a minima recusandae ratione, similique, eligendi qui odit!
+       </h5>
+       <h5>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ipsum laudantium fugit voluptate magnam expedita, assumenda neque dolorum cupiditate aspernatur explicabo adipisci a minima recusandae ratione, similique, eligendi qui odit!
+       </h5>
+    
+       <button onclick="second()">change</button>
+    </center>
+
+    <h4 class="third">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, impedit explicabo culpa illum dolorum maiores a, voluptatibus non facilis officia rerum quasi fugiat, vero quos qui distinctio! Quaerat, maxime quasi!
+    </h4>
+    <h4 class="third">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, impedit explicabo culpa illum dolorum maiores a, voluptatibus non facilis officia rerum quasi fugiat, vero quos qui distinctio! Quaerat, maxime quasi!
+    </h4>
+    <h4 class="third">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, impedit explicabo culpa illum dolorum maiores a, voluptatibus non facilis officia rerum quasi fugiat, vero quos qui distinctio! Quaerat, maxime quasi!
+    </h4>
+    <button onclick="sm()">click</button>
+   
+</body>
+</html>
+<script>
+    function  first(){
+        let a=document.querySelector("#first")
+ a.style.color="red"
+    }
+
+    function  second(){
+        let b=document.querySelectorAll("h3")
+        let c=document.querySelectorAll("h5")
+
+        for(let i=0 ; i<b.length ; i++){
+            b[i].style.color="green"
+        }
+
+        for(let i=0; i<c.length; i++){
+            c[i].style.color="blue"
+        }
+      
+    }
+
+    function sm(){
+        let d=document.querySelectorAll(".third")
+        
+        for(let i=0; i<d.length; i++){
+            d[i].style.color="blue"
+        }
+      
+    }
+ 
+</script>

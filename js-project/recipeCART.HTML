@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="menu"></div>
+</body>
+</html>
+<script>
+     let products = JSON.parse(localStorage.getItem("user")) || []
+
+    function recipeCart(){
+         products.map((el)=>{
+            let div=document.createElement("div");
+
+ let title=document.createElement("p")
+            title.innerHTML = el.title
+
+
+ let price=document.createElement("p")
+    price.innerHTML = el.price
+     
+
+    let image=document.createElement("img")
+    image.src=el.Image
+
+
+    div.append(image,title,price)
+
+    document.getElementById("menu").append(div)
+         })
+    }
+    recipeCart()
+</script>

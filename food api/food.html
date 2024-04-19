@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #overview{
+        display: flex; 
+          flex-wrap: wrap;
+          justify-content: space-around;
+          align-items: center;
+        width: 100%;
+        height: auto;
+        
+    }
+    .sub{
+        width: 33%;
+        height: 500px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        overflow: hidden;
+        margin-top: 20px;
+       
+    }
+    P{
+        overflow:hidden ;
+    }
+</style>
+
+<body>
+    <div><h1 style="text-align: center; margin-top: 5PX;" >LunchBox</h1></div>
+<div id="overview"></div>
+</body>
+
+</html>
+<script>
+
+    async function myFood() {
+
+        let food = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+        let response = await food.json()
+        console.log(response)
+        realFood(response)
+    }
+    myFood()
+
+
+    function realFood(response) {
+
+        response.categories.map((el) => {
+
+   let div=document.createElement("div")
+
+   div.setAttribute("class","sub" )
+
+   
+strCategoryThumb= document.createElement("img")
+strCategoryThumb.setAttribute("src", el.strCategoryThumb)
+
+strCategoryDescription=document.createElement("p")
+strCategoryDescription.innerHTML=el.strCategoryDescription
+
+strCategory=document.createElement("h3")
+strCategory.innerHTML=el.strCategory
+
+
+idCategory=document.createElement("h2")
+idCategory.innerHTML=  " food no : " + el.idCategory
+
+
+
+
+
+div.append(strCategoryThumb,
+idCategory,strCategory,strCategoryDescription)
+document.getElementById("overview").append(div)
+
+        })
+
+    }
+</script>       

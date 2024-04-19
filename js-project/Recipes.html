@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Manager</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+  
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    background-image: url(img/food-4k-jx0j7rqea6yv9phh.jpg);
+    background-size:310vh;
+    background-position: center;
+   background-repeat: no-repeat;
+ 
+    
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+   background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+}
+#search{
+    background-color:transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    height: 20px;
+    padding-left: 5px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.recipe-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.recipe-card {
+    background-color: rgb(35, 35, 35);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.recipe-card img {
+    width: 100%;
+    border-radius: 5px;
+}
+#addBtn{
+    width: 130px;
+    height: 30px;
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+.btn-group {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+#recipeForm{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(img/);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 20% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Food menu</h1>
+            <input type="text" id="search" placeholder="Search...">
+        </div>
+        <div class="recipe-list" id="recipeList">
+        </div>
+        <button id="addBtn">Add your dish</button>
+    </div>
+
+    <div class="modal" id="recipeModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Add Recipe</h2>
+            <form id="recipeForm">
+                <label for="recipeName">Recipe Name:</label>
+                <input type="text" id="recipeName" required><br>
+                <label for="recipeInstructions">Ingredients:</label>
+                <input type="text" id="recipeInstructions" required></input><br>
+                <label for="recipeImage">Image URL:</label>
+                <input type="text" id="recipeImage"><br>
+                <button type="submit" id="saveBtn">Update</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const recipeList = document.getElementById("recipeList");
+    const addBtn = document.getElementById("addBtn");
+    const modal = document.getElementById("recipeModal");
+    const closeBtn = document.querySelector(".close");
+    const recipeForm = document.getElementById("recipeForm");
+    const searchInput = document.getElementById("search");
+
+    let recipes = [];
+
+    if(localStorage.getItem("recipes")) {
+        recipes = JSON.parse(localStorage.getItem("recipes"));
+        displayRecipes(recipes);
+    }
+
+    addBtn.addEventListener("click", () => openModal("Add Recipe"));
+    closeBtn.addEventListener("click", closeModal);
+    recipeForm.addEventListener("submit", saveRecipe);
+    searchInput.addEventListener("input", searchRecipes);
+
+    function openModal(title, index) {
+        modal.style.display = "block";
+        document.getElementById("modalTitle").textContent = title;
+        if (index !== undefined) {
+            const recipe = recipes[index];
+            document.getElementById("recipeName").value = recipe.name;
+            document.getElementById("recipeInstructions").value = recipe.instructions;
+            document.getElementById("recipeImage").value = recipe.imageUrl;
+            recipeForm.setAttribute("data-index", index);
+        } else {
+            recipeForm.reset();
+            recipeForm.removeAttribute("data-index");
+        }
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    function saveRecipe(event) {
+        event.preventDefault();
+        const name = document.getElementById("recipeName").value.trim();
+        const instructions = document.getElementById("recipeInstructions").value.trim();
+        const imageUrl = document.getElementById("recipeImage").value.trim();
+        const index = recipeForm.getAttribute("data-index");
+
+        if (!name || !instructions) {
+            alert("Please fill in all fields");
+            return;
+        }
+
+        const recipe = { name, instructions, imageUrl };
+
+        if (index !== null) {
+            recipes[index] = recipe;
+        } else {
+            recipes.push(recipe);
+        }
+
+        saveRecipesToLocalStorage();
+        displayRecipes(recipes);
+        closeModal();
+    }
+
+    function displayRecipes(recipesToDisplay) {
+        recipeList.innerHTML = "";
+        recipesToDisplay.forEach((recipe, index) => {
+            const card = document.createElement("div");
+            card.classList.add("recipe-card");
+            card.innerHTML = `
+                <img src="${recipe.imageUrl}" alt="${recipe.name}">
+                <h3>${recipe.name}</h3>
+                <p>${recipe.instructions}</p>
+                <div class="btn-group">
+                    <button class="edit-btn" data-index="${index}">Edit</button>
+                    <button class="delete-btn" data-index="${index}">Delete</button>
+                </div>
+            `;
+            recipeList.appendChild(card);
+        });
+
+        const editBtns = document.querySelectorAll(".edit-btn");
+        editBtns.forEach(btn => {
+            btn.addEventListener("click", (event) => {
+                const index = event.target.dataset.index;
+                openModal("Edit Recipe", index);
+            });
+        });
+
+        const deleteBtns = document.querySelectorAll(".delete-btn");
+        deleteBtns.forEach(btn => {
+            btn.addEventListener("click", (event) => {
+                const index = event.target.dataset.index;
+                deleteRecipe(index);
+            });
+        });
+    }
+
+    function deleteRecipe(index) {
+        recipes.splice(index, 1);
+        saveRecipesToLocalStorage();
+        displayRecipes(recipes);
+    }
+
+    function saveRecipesToLocalStorage() {
+        localStorage.setItem("recipes", JSON.stringify(recipes));
+    }
+
+    function searchRecipes() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredRecipes = recipes.filter(recipe =>
+            recipe.name.toLowerCase().includes(searchTerm)
+        );
+        displayRecipes(filteredRecipes);
+    }
+});
+
+    </script>
+</body>
+</html>

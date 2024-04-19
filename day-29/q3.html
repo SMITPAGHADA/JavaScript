@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" id="in">
+    <br>
+    <button onclick="check()">sub</button>
+    <h1 id="ans"></h1>
+</body>
+
+</html>
+
+<script>
+
+
+function z(num){
+    
+    if(num ==""){
+       throw new Error(" entered  number");
+    }
+    if(num<18){
+        throw new Error(" not eligible to vote");
+    }else
+    {
+        document.getElementById("ans").innerHTML="eligible to vote";
+    }
+   
+}
+
+
+    function check() {
+
+        try {
+            let num = document.getElementById("in").value
+
+            z(num);
+        } catch (e) {
+              document.getElementById("ans").innerHTML = e.message;
+        }
+    }
+</script>

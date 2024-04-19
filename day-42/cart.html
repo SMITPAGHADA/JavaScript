@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main"></div>
+</body>
+</html>
+<script>
+      let products = JSON.parse(localStorage.getItem("open")) || []
+      function displayCart(){
+       products.map((el,index)=>{
+        let first =document.createElement("div");
+        first.setAttribute("id",el.getAttribute("s"));
+        
+
+        
+
+let Image = document.createElement("img");
+Image.setAttribute("src",el.Image);
+
+let title=document.createElement("p")
+title.innerHTML = el.title
+
+
+let price=document.createElement("p")
+price.innerHTML = el.price  
+
+let id=document.createElement("p")
+id.innerHTML = el.id
+
+
+let rate=document.createElement("p")
+rate.innerHTML = el.id
+
+let Delete=document.createElement("button")
+Delete.innerHTML = "Delete";
+
+Delete.addEventListener("click",function(){
+    products.splice(index,1)
+    localStorage.setItem("open",JSON.stringify(products))
+    displayCart()
+})
+
+first.append(id, title, price,Image,rate,Delete)
+
+document.getElementById("main").append(first)
+       })
+        
+      }
+      displayCart();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,29 @@
+.navbar{
+   
+    height: 90px;
+    border: 1px solid black;
+} 
+.img-1{
+    background-image: url(/img/index-01-566x401.jpg);
+    width: 450px;
+    height: 300px   ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img-2{
+    background-image: url(/img/index-02-566x401.jpg);
+    width: 450px;
+    height: 300px   ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img-3{
+    background-image: url(/img/index-03-566x401.jpg);
+    width: 450px;
+    height: 300px   ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

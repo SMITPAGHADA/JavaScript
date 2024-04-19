@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main"></div>
+    <div id="cart"></div>
+
+    <select id="select">
+        <option value="az">a to z</option>
+        <option value="za">z to a</option>
+        <option value="hl">highe to low</option>
+        <option value="lh">low to highe</option>
+    </select>
+</body>
+</html>
+<script>
+
+
+let btn=document.createElement("button");
+btn.innerHTML="Cart";
+document.getElementById("cart").append(btn);
+
+
+btn.addEventListener("click", function(){
+    window.open("cart.html")
+})
+    let data=[ { 
+           
+               id:1, 
+               title:"ulaptop",
+               price:70000,
+               rate:4,
+               Image:"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQnjj1gQ1iiNyY6xdoGZVp5mf5okIeCyCXpcR_mqepPZxwV7y4LeAgQlkaPPHaaBO4zxaOG-YL76iyzXkioXkIBFl1YFj2JAizryj6soH-IVGXfa9OZ7b2dfioG2NL8fCQJJmgG_w&usqp=CAc",
+             
+              },
+
+              {id:2, 
+               title:"alaptop",
+               price:50000,
+               rate:5,
+               Image:"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTjKhEubD8Jh3WKeTx_mpdmcyIqE9iUfVm_P71Nha2oxLtLNEGn54tWIp6Zf15Cg9rJo7JY616gjqcOdX1A-x_ov-Be82-OtGYCSG4NeojGc0nSlWccpR98qXmQvApisQKCWU39Gf0&usqp=CAc"
+              },
+
+              {id:3, 
+               title:"blaptop",
+               price:60000,
+               rate:2,
+               Image:"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSahWG6IfshmqoZHTvdvxUIRn3dfuCy4PVcOHfIaRCcJdZc15OW4-BHqtfF6P8D-z05A9L7D38QSH6m7yn4d0NUL7BIXKZy3SPXTeGkwwgfgddKi-FG4HzmOfuTAbQ08Mj2F9PANYY&usqp=CAc"
+              },
+
+              {
+                id:4, 
+               title:"zlaptop",
+               price:40000,
+               rate:8,
+               Image:"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSahWG6IfshmqoZHTvdvxUIRn3dfuCy4PVcOHfIaRCcJdZc15OW4-BHqtfF6P8D-z05A9L7D38QSH6m7yn4d0NUL7BIXKZy3SPXTeGkwwgfgddKi-FG4HzmOfuTAbQ08Mj2F9PANYY&usqp=CAc"
+              },
+    ]
+
+
+    function display(data) {
+        data.map((el,index)=>{
+
+            let first =document.createElement("div");
+
+            let Image = document.createElement("img");
+            Image.setAttribute("src",el.Image);
+
+            let title=document.createElement("p")
+            title.innerHTML = el.title
+
+
+            let price=document.createElement("p")
+            price.innerHTML = el.price
+
+            let id=document.createElement("p")
+            id.innerHTML = el.id
+
+           
+            
+            let add = document.createElement("button");
+            add.innerHTML = "Add To Cart";
+
+            add.addEventListener("click",function(){
+                displaycart(data, index);
+            });
+
+            first.append(id, title, price,Image,rate,add)
+
+            document.getElementById("main").append(first)
+        })
+    }
+    display(data);
+
+
+    let select=document.getElementById("select")
+
+    select.addEventListener("change",function(){
+  document.getElementById("main").innerHTML=""
+
+        let selectValue=select.value
+        let selectarr=[]
+
+        if(selectValue==="lh"){
+            selectarr=data.slice().sort((a,b)=>a.price-b.price)
+        }
+        if(selectValue==="hl"){
+            selectarr=data.slice().sort((a,b)=>b.price-a.price)
+        }
+
+        if(selectValue==="az"){
+            selectarr=data.slice().sort((a,b)=>a.title.localeCompare(b.title.localeCompare))
+        }
+        if(selectValue==="za"){
+            selectarr=data.slice().sort((a,b)=>b.title.localeCompare(a.title.localeCompare))
+        }
+        display(selectarr)
+    })
+
+    function displaycart(data,index) {
+        let product=data[index]
+        let products = JSON.parse(localStorage.getItem("open")) || [];
+    products.push(product);
+
+    localStorage.setItem("open", JSON.stringify(products));
+    }
+    
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <div id="modal">
+            50% Discount of your Favorite brands
+        </div>
+        <button onclick="showmodal()"> shop now</button>
+    </center>
+</body>
+</html>
+<style>
+    #modal{
+        width: 300px;
+        height: 200px;
+        background-color: black;
+        margin-top: 10px;
+        color: white;
+        display: none;
+       
+    }
+</style>
+<script>
+    let modal=document.getElementById("modal");
+
+
+
+    function showmodal(){
+        modal.style.display="block";
+        setTimeout(closeModal,1000)
+    }
+    function closeModal(){
+        modal.style.display="none";
+    }
+</script>

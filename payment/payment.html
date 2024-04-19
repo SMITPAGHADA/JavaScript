@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <form id="main">
+            <input type="text" id="message">
+            <button type="submit" id="submit">submit</button>
+        </form>
+        <img src="ZKZg.gif" alt="" id="load">
+        <h1 id="result"></h1>
+    </center>
+
+   
+</body>
+
+</html>
+<script>
+    document.getElementById("load").style.display = "none";
+
+    document.getElementById("main").addEventListener("submit", function () {
+event.preventDefault();
+        let price = document.getElementById("message").value
+        document.getElementById("result").innerHTML = " "
+        let Pro = new Promise(function (response, rejected) {
+
+            setTimeout(() => {
+                if (price >= 1 && price<=500) {
+                    response("success")
+                } else {
+                    rejected("error")
+                }
+            },1000);
+
+
+         
+
+
+        })
+        document.getElementById("load").style.display = "block";
+            Pro
+                .then(function(response) {
+                    document.getElementById("load").style.display = "none";
+                    document.getElementById("result").innerHTML = response
+                })
+                .catch(function(rejected) {
+                    document.getElementById("load").style.display = "none";
+                    document.getElementById("result").innerHTML = rejected
+                })
+    })
+
+
+
+
+</script>

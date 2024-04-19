@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #main{
+        display: flex;
+    }
+    img{
+        width: 20%;
+    }
+  </style>
+  <body>
+    <div id="main"></div>
+  </body>
+</html>
+<script>
+      let products = JSON.parse(localStorage.getItem("open")) || []
+  function displayCart() {
+    products.map((el) => {
+      let div = document.createElement("div");
+
+      let Image = document.createElement("img");
+      Image.setAttribute("src", el.Image);
+
+      let discription = document.createElement("p");
+      discription.innerHTML = el.discription;
+
+      let price = document.createElement("p");
+      price.innerHTML = el.price;
+
+      div.append(Image, discription, price);
+      document.getElementById("main").append(div);
+    });
+  }
+  displayCart();
+</script>

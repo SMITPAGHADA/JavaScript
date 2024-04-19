@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title></head
+  ><style>
+    #main {
+      display: flex;
+      justify-content: space-evenly;
+    }
+    img {
+      width: 20%;
+    }
+    p {
+      color: red;
+    }
+    h4 {
+      color: green;
+    }
+  </style>
+
+  <body>
+    <div id="main"></div>
+    <div id="cart"></div>
+  </body>
+</html>
+<script>
+  let btn = document.createElement("button");
+  btn.innerHTML = "Cart";
+  document.getElementById("cart").append(btn);
+
+  btn.addEventListener("click", function () {
+    window.open("cart.html");
+  });
+
+  let arr = [
+    {
+      id: 1,
+      discription: "this is a our product",
+      price: 2500,
+      Image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    },
+    {
+      id: 2,
+      discription: "this is a our product",
+      price: 2500,
+      Image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    },
+    {
+      id: 3,
+      discription: "this is a our product",
+      price: 2500,
+      Image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    },
+    {
+      id: 4,
+      discription: "this is a our product",
+      price: 2500,
+      Image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    },
+  ];
+
+  function view(arr) {
+    arr.map((el, index) => {
+      let first = document.createElement("div");
+
+      let Image = document.createElement("img");
+      Image.setAttribute("src", el.Image);
+
+      let discription = document.createElement("p");
+      discription.innerHTML = el.discription;
+
+      let price = document.createElement("h4");
+      price.innerHTML = el.price;
+
+      let add = document.createElement("button");
+      add.innerHTML = "Add To Cart";
+
+      add.addEventListener("click", function () {
+        addcart(arr, index);
+      });
+
+      first.append(Image, discription, price, add);
+      document.getElementById("main").append(first);
+    });
+  }
+  view(arr);
+
+  function addcart(arr, index) {
+    let product = arr[index];
+    let products = JSON.parse(localStorage.getItem("open")) || [];
+    products.push(product);
+    localStorage.setItem("open", JSON.stringify(products));
+  }
+</script>

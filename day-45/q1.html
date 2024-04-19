@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    #main{
+        display: flex;
+        justify-content: space-evenly;
+       flex-wrap: wrap;
+      border: 1px solid black;
+        width: 100%;
+        height: auto;
+    }
+
+    .hero{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        width: 23%;
+        height: auto;
+        border: 1px solid black;
+        margin-top: 10px;
+
+    }
+    #im1 {
+        width:300px ;
+        height: 300px;
+    }
+</style>
+<body>
+    <div id="main"></div>
+</body> 
+</html>
+
+
+<script>
+
+    async function display(){
+   let data= await fetch("https://fakestoreapi.com/products")
+   let res= await data.json();
+   console.log(res);
+ car(res);
+    }
+    display();
+
+
+    function car(res){
+           
+       res.map((el)=>{
+    let div=document.createElement("div");   
+    div.setAttribute("class","hero");
+
+    let id=document.createElement("h6");
+    id.innerHTML=el.id;
+
+    let image=document.createElement("img");
+    image.setAttribute("id","im1");
+    image.setAttribute("src",el.image,)
+     
+
+    let title=document.createElement("p");
+    title.innerHTML=el.title;
+
+    let category =document.createElement("h5");
+    category.innerHTML=el.category;
+
+
+    let price =document.createElement("h5");
+    price.innerHTML=el.price;
+
+    let description =document.createElement("h5");
+    description.innerHTML=el.description;
+
+
+   
+   
+
+
+    div.append(image,id,category,price,title,description)
+
+    document.getElementById("main").append(div);
+ 
+       }) 
+    } 
+
+
+ 
+      
+
+</script>

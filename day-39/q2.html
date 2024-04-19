@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+  
+</style>
+<body>
+    <center>
+        <form id="login">
+            <label >Email</label>
+            <input type="text" id="Email1">
+            <br><br><br>
+            <label>password</label>
+            <input type="text" id="psw1">
+            <br><br><br>
+
+            <button type="submit">submit</button>
+        </form>
+    </center>
+</body>
+</html>
+<script>
+    let second=document.getElementById("login");
+    second.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+        let loginemail=document.getElementById("Email1").value;
+        let  loginpsw=document.getElementById("psw1").value;
+        
+
+        let storeUp= JSON.parse(localStorage.getItem("users"))  || []
+
+        let login1=storeUp.find(users=>users.email===loginemail && users.password===loginpsw)
+
+        if(login1) {
+            alert("Login successful")
+        }else{
+            alert("Login failed")
+        }
+    })
+</script>

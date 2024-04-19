@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Manipulation</title>
+</head>
+<body>
+
+    
+         <h1 id="s1">
+        first name 
+    </h1>
+    <button onclick="firstname()">FIRSTNAME</button>
+
+    <h2 id="s2">
+        last name
+    </h2>
+    <button onclick="lastname()">LASTNAME</button>
+
+    <h3 id="s3">fist&lastName</h3>
+    <button onclick="name()">NAME</button>
+
+
+   
+</body>
+</html>
+<script>
+  
+
+    function firstname(){
+        let a=document.getElementById("s1").innerHTML="smit"
+    } 
+
+    function lastname(){
+        let a=document.getElementById("s2").innerHTML="pagada"
+    }
+    function name(){
+        let a=document.getElementById("s3").innerHTML="smit pagada"
+    }
+</script>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+    #main{
+        display: flex;
+        justify-content: space-evenly;
+       flex-wrap: wrap;
+      /* border: 1px solid black;
+        width: 100%; */
+        height: auto;
+    }
+
+    .hero{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        width: 23%;
+        height: auto;
+        border: 1px solid black;
+        margin-top: 10px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    #im1 {
+        width:300px ;
+        height: 300px;
+    }
+</style>
+<body>
+    <div id="main"></div>
+
+    <img src="" alt="" id="pic">
+
+    
+</body>
+</html>
+<script>
+    fetch("https://api.sampleapis.com/cartoons/cartoons2D")
+.then(function(res){
+    return res.json();
+})
+
+.then(function(json){
+    console.log(json)
+    cart(json);
+});
+
+function cart(json){
+json.map((el)=>{
+    let div=document.createElement("div");   
+    div.setAttribute("class","hero");
+
+    let creator=document.createElement("h6");
+    creator.innerHTML=el.creator;
+
+    let image=document.createElement("img");
+    image.setAttribute("id","im1");
+    image.setAttribute("src",el.image,)
+     
+
+    let title=document.createElement("p");
+    title.innerHTML=el.title;
+
+
+
+ let rating=document.createElement("h5");
+   rating.innerHTML=el.rating;
+
+    let description =document.createElement("h5");
+    description.innerHTML=el.description;
+
+
+   
+
+
+    div.append(image,creator,title,rating)
+
+    document.getElementById("main").append(div);
+})
+}
+</script>

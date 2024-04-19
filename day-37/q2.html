@@ -1,0 +1,50 @@
+
+<!-- Design a modal window that displays additional content when triggered by a button click. The modal should appear in the center of the screen and should have a close button to dismiss it. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img{
+        display: none;
+    }
+    body{
+        background-color: black;
+    }
+</style>
+<body >
+    <center>
+        <h1 style="background-color: black; color: white; text-align: center;"> police</h1>
+       
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2NEuH1H3H6pSvktv8oNNJpFbZXC0jUfpsIwXzG66rocve9imHRwcuklVEruZwo-YlqFg&usqp=CAU" alt="" style="width: 100%; height: 200px;">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQA3gMBIgACEQEDEQH/xAAaAAEBAQEBAQEAAAAAAAAAAAAAAQIDBAYF/8QAGRABAQEBAQEAAAAAAAAAAAAAAAECETEh/8QAGgEAAwEBAQEAAAAAAAAAAAAAAAEDAgQFB//EABkRAQEBAQEBAAAAAAAAAAAAAAABAgMxEf/aAAwDAQACEQMRAD8A+CkbzCRvMeK+pYysjchI3Ixa6s5SRriwZVmSQAN/AUAQAgAAIKgCI1UDFiWJWkMrGLGbHSpwJ2OVjPHSxnjUqNy5Vz1HbUZsblc+8vPqOVj0bnxy1FJXF0y/QkbzEjeYja9nGVjRFYdGYCgbAAAAARQggoAgBEgqGVQWoCSxGkDFjHGbG6yadjnpix1sYrcQ3HLUcrnrvqOVjcrj3l75G4kaiT18xVRSVAAYAAAAABAAASgEAAElABVEUps1llpOGnYxfWa3WLDiWo51z061y16pHJ0j3xpIqNr1crFSKGwAAAAAAAAAQCAAAAAIAGUSqlDNQoU2KxWa1Wa1EtOenO+uunLSkcnR74rMaiNeplYqKTYAAAgCiACpQAAAAAAAAShQEhQps1lK0yadS+M1qs04npz056dNOdUjl29rUZaiNellQCbVABgAIAIwAyAAAAgCKAgIZUBAzUqValNOpWK1Wa1EtOenOulc6pHJt7Wow1Ea9HNbEiksAEAAAABgAIAAAABFQEJVqGVKgGxalSjNNi1KzWqxWojusVzvrenO1uOPde1uOUrealXpZrpFZlVleKIpGAAAAAAAAAAlAQACKhUplS1OjNNi0tS0ZtaStLXO1qsWtRDdY05adNOOr9VkcXWvbK3muUrealY9DG3bNbjlK1KnY6c6bEWEpKoBNAAAAAAgIBASoBkMrWabFp1LfhWa1E7UtZtWs04jqpaxauqxa3IhvTOq5av1vVctX6pHF109beQSruw6RuAxXXhqNRBlaNAEooBBKAAAGEADKUA2alZoGnWes0Gk74zaxVGkNMWudBuOfbnpyvoKZcXR/9k=" alt="" style="width: 100%; height: 200px;">
+    </center>
+</body>
+</html>
+<script>
+
+let b=document.querySelectorAll("img");
+index=0;
+
+function myslider(index){
+ for(let i=0; i<b.length; i++){
+    b[i].style.display="none"
+ }
+ b[index].style.display="block"
+}
+
+function startslide(){
+    setInterval(()=>{
+        myslider (index);
+        index++
+        if(index >=b.length){
+            index=0
+        }
+    },100)
+}
+
+startslide() 
+</script>

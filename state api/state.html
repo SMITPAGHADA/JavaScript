@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: black;
+    }
+    .main{
+        width: 100%;
+        display: flex;
+        position: relative;
+    }
+    
+    .sub{
+       text-align: center;
+       color: white; 
+       font-size: 30px;
+       margin-top: 40px;
+       
+    }
+    #up{
+        top: 150px;
+       left: 0;
+        /* margin-top: 100px; */
+        background-color: white;
+        margin-inline: 38%;
+        position: absolute;
+        padding-inline: 40px;
+        padding-block: 6px;
+        border: none;
+    }
+
+    .sub1{
+        /* width: 100%; */
+        /* display: flex; */
+        /* border: 1px solid white; */
+        margin-top: 170px;
+        margin-left: 39%;
+       position: absolute;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        color: white;
+        /* background-color: chartreuse; */
+    }
+    .btn{
+        width: 152px;
+        background-color: white;
+        margin-inline: 40%;
+        position: absolute;
+       top: 150px;
+       left: 210px;
+       padding-block: 5px;
+       padding-inline: 20px;
+        border: none;
+    }
+   
+</style>
+
+<body>
+
+    <div class="sub">CORONA PR</div>
+    <div id="main"></div>
+
+    <input type="text" id="up">
+    <button onclick="state()" class="btn">Search state  🔍  </button>
+  
+</body>
+
+</html>
+<script>
+
+    function state() {
+
+        let search = document.getElementById("up").value
+        let upper = search.toUpperCase();
+
+        let key = fetch(`https://data.covid19india.org/v4/min/data.min.json`)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (json) {
+                console.log(json);
+                data(json, upper);
+            })
+        return (upper)
+    }
+
+    function data(json, upper) {
+
+
+        document.getElementById("main").innerHTML = " "
+        let data = document.createElement("div");
+        data.setAttribute("class", "sub1");
+
+
+
+
+        let name = document.createElement("h1");
+        name.innerHTML = "state name = " + upper
+        name.setAttribute("class","title")
+
+
+        let search_state = document.createElement("h1");
+        search_state.innerHTML = "tested = " + json[upper].delta7.tested;
+        search_state.setAttribute("class","sea")
+
+        let search_state1 = document.createElement("h3");
+        search_state1.innerHTML = json[upper].delta7.tested;
+        search_state1.setAttribute("class","sea")
+
+        let confirmed = document.createElement("h3");
+        confirmed.innerHTML = "confirmed = " + json[upper].delta7.confirmed;
+
+
+        let recovered = document.createElement("h3")
+        recovered.innerHTML = "recovered = " + json[upper].delta7.recovered;
+
+        let vaccinated1 = document.createElement("h3");
+        vaccinated1.innerHTML = "vaccinated 1= " + json[upper].delta7.vaccinated1;
+
+        let vaccinated2 = document.createElement("h3");
+        vaccinated2.innerHTML = "vaccinated 2= " + json[upper].delta7.vaccinated2;
+
+
+        data.append(name, confirmed, recovered,vaccinated1,vaccinated2);
+
+        document.getElementById("main").append(data)
+
+    }
+
+</script>
